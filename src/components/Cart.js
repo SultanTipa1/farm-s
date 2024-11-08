@@ -1,18 +1,18 @@
 // src/components/Cart.js
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeItem, updateQuantity } from '../redux/cartSlice';
+import { removeFromCart, addToCart } from '../redux/cartSlice';
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
-  const handleRemoveItem = (id) => {
-    dispatch(removeItem(id));
+  const handleRemoveFromcart = (id) => {
+    dispatch(removeFromCart(id));
   };
 
   const handleQuantityChange = (id, quantity) => {
-    dispatch(updateQuantity({ id, quantity }));
+    dispatch(addToCart({ id, quantity }));
   };
 
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -33,7 +33,7 @@ const Cart = () => {
                 onChange={(e) => handleQuantityChange(item.id, Number(e.target.value))}
                 min="1"
               />
-              <button onClick={() => handleRemoveItem(item.id)}>Remove</button>
+              <button onClick={() => handleRemoveFromcart(item.id)}>Remove</button>
             </li>
           ))}
         </ul>

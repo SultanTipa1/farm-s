@@ -7,7 +7,7 @@ import { theme } from './theme';
 import store from './redux/store';
 
 // Importing Components
-import Header from './components/Header';
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
@@ -15,7 +15,7 @@ import FilterSidebar from './components/FilterSidebar';
 
 // Importing Pages
 import Home from './pages/Home';
-import AnimalDetails from './pages/AnimalDetails';
+import AnimalDetail from './pages/AnimalDetail';
 import AnimalListing from './pages/AnimalListing';
 import Login from './pages/Login';
 
@@ -28,14 +28,15 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <Router>
           <div className="App">
-            <Header />
+            <Navbar />
 
             {/* Routes for navigation */}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/animals" element={<AnimalListing />} />
-              <Route path="/animals/:id" element={<AnimalDetails />} />
+              <Route path="/animals/:id" element={<AnimalDetail />} />
+              <Route path="/Filtersidebar" element={<FilterSidebar />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<Checkout />} />
             </Routes>
